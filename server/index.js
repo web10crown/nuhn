@@ -2,16 +2,15 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const checkCreditCard = require('./nuhn');
-app.use(cors());
+app.use(cors({
+    origin: 'https://nuhn.vercel.app/',
+    methods: 'GET,POST,PUT,DELETE',
+}));
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
 
 app.post('/', async (req, res) => {
-    var cardRes =  checkCreditCard(req.body.number);
+    var cardRes = checkCreditCard(req.body.number);
     res.status(200).json(cardRes);
 })
 
