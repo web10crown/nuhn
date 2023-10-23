@@ -12,7 +12,7 @@ function App() {
   }
   const getValidation = async () => {
     setStatus(3);
-    const res = await axios.post('http://localhost:5000', {
+    const res = await axios.post('https://nuhn-api.vercel.app/', {
       number
     });
     if (res.data) {
