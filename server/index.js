@@ -5,6 +5,11 @@ const checkCreditCard = require('./nuhn');
 app.use(cors());
 app.use(express.json());
 
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+});
+
 app.post('/', async (req, res) => {
     var cardRes =  checkCreditCard(req.body.number);
     res.status(200).json(cardRes);
