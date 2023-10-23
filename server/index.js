@@ -8,7 +8,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
-
+app.get('/',(req,res) => {
+    res.send("app is working fine");
+})
 app.post('/', async (req, res) => {
     var cardRes = checkCreditCard(req.body.number);
     res.status(200).json(cardRes);
