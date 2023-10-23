@@ -2,10 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const checkCreditCard = require('./nuhn/nuhn');
-app.use(cors({
-    origin: 'https://nuhn.vercel.app/',
-    methods: 'GET,POST,PUT,DELETE',
-}));
+
+app.use(cors());
 app.use(express.json());
 
 app.get('/',(req,res) => {
